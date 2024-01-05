@@ -13,10 +13,7 @@ Az optimalizálás alapjai (direkt kereső módszerek, gradiens alapú módszere
     - Elégséges feltétel: páros számú magasabb derivált nem nulla (pl. a 2. derivált). Ha pozitív: minimum, ha negatív: maximum.
 
 - Többváltozós függvény szélsőértéke:
-    - Szükséges feltétel: minden első derivált nulla (stacionárius pont): 
-      ```math
-      \frac{\partial f}{\partial x_i}=0, \quad i=1\dots n
-      ```
+    - Szükséges feltétel: minden első derivált nulla (stacionárius pont): $`\dfrac{\partial f}{\partial x_i}=0, \quad i=1\dots n`$
 
     - Elégséges feltétel: A második deriváltakból alkotott szimmetrikus mátrix (Hesse-mátrix) pozitív vagy negatív definit:
 
@@ -51,7 +48,7 @@ azaz a célfüggvény gradiense kifejezhető a korlátozásokat definiáló $`g_
 ### Többváltozós függvény szélsőértéke _egyenlőtlenség típusú_ korlátozások mellett:
 
 Optimalizálandó függvény:  
-- $`f(\mathbf{x})``$, ahol $`\mathbf{x}=[x_1,\dots,x_n]^T`$  
+- $`f(\mathbf{x})`$, ahol $`\mathbf{x}=[x_1,\dots,x_n]^T`$  
 
 Korlátozások: 
 - $`\mathbf{g}(\mathbf{x})=[g_1(\mathbf{x}),\dots,g_r(\mathbf{x})]^T = \mathbf{0}`$ (egyenlőség típusú)
@@ -114,8 +111,10 @@ Adott a következő minimalizálandó költségfüggvény:
 Ismert $`\mathbf{x}_1`$ kezdőállapot esetén keressük azt az optimális $`\mathbf{u}_1,\dots,\mathbf{u}_N`$ irányítást, amely minimális költséget eredményez. Az egyenlőség típusú korlátozásokat a rendszeregyenlet adja meg minden időpillanatra. A feladat megoldható dinamikus programozással (rekurzióval), amelynek alapja a minimumfeladat alábbi ekvivalens felírása:
 
 ```math
- \min_{\mathbf{u}_1, \dots, \mathbf{u}_N} \sum_{k=1}^N H_k(\mathbf{x}_k, \mathbf{u}_k) = 
-\min_{\mathbf{u}_1} \min_{\mathbf{u}_2} \dots \min_{\mathbf{u}_N} \sum_{k=1}^N H_k(\mathbf{x}_k, \mathbf{u}_k) = \\
+\min_{\mathbf{u}_1, \dots, \mathbf{u}_N} \sum_{k=1}^N H_k(\mathbf{x}_k, \mathbf{u}_k) = 
+\min_{\mathbf{u}_1} \min_{\mathbf{u}_2} \dots \min_{\mathbf{u}_N} \sum_{k=1}^N H_k(\mathbf{x}_k, \mathbf{u}_k) =
+```
+```math
 = \min_{\mathbf{u}_1} \Biggl( H_1 + \min_{\mathbf{u}_2} \biggl( H_2 + \dots + \min_{\mathbf{u}_{N}-1} \Bigl( H_{N-1} + \min_{\mathbf{u}_N} H_N \Bigr) \biggr) \Biggr)
 ```
 
@@ -324,8 +323,9 @@ Definiáljuk a $`k`$-adik lépésbeli reziduált:
 Ennek segítségével a $`\mathbf{p}_k`$ lépésirány (amely minden előzőre konjugált) és az $`\alpha_k`$ lépésköz a következő képletekkel számítható:
 
 ```math
-\mathbf{p}_k = \mathbf{r}_k - \sum_{i<k} \frac{\mathbf{p}_i^T \mathbf{A} \mathbf{r}_k}{\mathbf{p}_i^T \mathbf{A} \mathbf{p}_i}\mathbf{p}_i
+\mathbf{p}_k = \mathbf{r}_k - \sum_{i < k} \frac{\mathbf{p}_i^T \mathbf{A} \mathbf{r}_k}{\mathbf{p}_i^T \mathbf{A} \mathbf{p}_i} \mathbf{p}_i
 ```
+
 ```math
 \alpha_k = \frac{\mathbf{p}_k^T \mathbf{r}_k}{\mathbf{p}_k^T \mathbf{A} \mathbf{p}_k}
 ```
