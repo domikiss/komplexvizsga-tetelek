@@ -91,7 +91,7 @@ Fontos észrevenni, hogy az eredeti problémának akkor van $`\mathbf{x}=\mathbf
 \mathbf{z} \geq \mathbf{0}
 ```
 
-(Érdekes inspirációs videó: https://youtu.be/E72DWgKP_1Y?si=pK3geSNQbk8OOAxb)
+\(Érdekes inspirációs videó: https://youtu.be/E72DWgKP_1Y?si=pK3geSNQbk8OOAxb\)
 
 
 ### Másodrendű kúpprogramozás
