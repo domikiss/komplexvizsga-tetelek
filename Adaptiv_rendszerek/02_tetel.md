@@ -31,17 +31,29 @@ A 2. és a 3. feltétel úgy is megfogalmazható, hogy a megengedhetőségi tart
 
 A konvex optimalizálás speciális esete a lineáris programozás, amikor a mind a célfüggvény, mind a korlátozásokat definiáló függvények lineárisak (ill. affin függvények).
 
-- Feladat: $`\min_{\mathbf{x}} \mathbf{c}^T\mathbf{x} = \min \sum_{i=1}^n c_i x_i`$
+- Feladat:
+```math
+\min_{\mathbf{x}} \mathbf{c}^T\mathbf{x} = \min \sum_{i=1}^{n} c_i x_i
+```
+
 - Korlátozások:
-  - $`\mathbf{Ax} \leq \mathbf{b} \geq \mathbf{0}, \quad \mathbf{b}=[b_1,\dots,b_m]^T`$
-  - $`\mathbf{x} \geq \mathbf{0}`$
+```math
+\mathbf{Ax} \leq \mathbf{b} \geq \mathbf{0}, \quad \mathbf{b}=[b_1,\dots,b_m]^T
+```
+```math
+\mathbf{x} \geq \mathbf{0}
+```
 
 Ekkor a megengedhetőségi tartomány egy poliéder (hipersíkokkal határolt térrész), az optimumpont pedig a lineáris célfüggvény miatt ennek az egyik csúcspontja.
 
 A feladat megoldására egy lehetőség a szimplex módszer, amikor a megengedhetőségi tartomány élei mentén mozgunk úgy, hogy mindig a legnagyobb mértékű csökkenést érjük el a célfüggvényben. Ehhez plusz változók bevezetésével (slack variables) egyenlőség típusúvá alakítjuk az egyenlőtlenség típusú korlátozásokat:
-- Korlátozások:
-  - $`\mathbf{Ax} + \mathbf{s} = \mathbf{b} \geq \mathbf{0}`$
-  - $`\mathbf{x} \geq \mathbf{0}, \; \mathbf{s} \geq \mathbf{0}`$
+
+```math
+\mathbf{Ax} + \mathbf{s} = \mathbf{b} \geq \mathbf{0}
+```
+```math
+\mathbf{x} \geq \mathbf{0}, \; \mathbf{s} \geq \mathbf{0}
+```
 
 Az eljárás során az $`\mathbf{x}=\mathbf{0}`$ pontból indulunk, és a cél minden lépésben az, hogy az aktuális csúcspontból egy él mentén egy másik csúcspontba jussunk. Ehhez valamelyik aktuálisan aktív korlátozást (tight constraint, azaz amelynél az egyenlőség teljesül) lazítjuk (loosen), és egy másikat aktiválunk (tighten). Egy lépésben a következőket tesszük:
 - A célfüggvényt vizsgálva azt az éppen nulla értékű (tight) változót választjuk ki, amelynek pozitív irányában a célfüggvény gradiense negatív és a legmeredekebb (ezt a változót fogjuk lazítani, azaz nullából elmozdítani).
@@ -57,14 +69,27 @@ A lineáris programozási problémához mindig tartozik egy duális probléma is
   - $`\max_{\mathbf{y}} \mathbf{y}^T\mathbf{b}`$
   - $`\mathbf{y}^T\mathbf{Ax}^* \leq \mathbf{c}^T\mathbf{x}^*`$
 - Transzponálás és egyszerűsítés után az alábbi duális LP problémát kapjuk:
-  - $`\max_{\mathbf{y}} \mathbf{b}^T\mathbf{y}`$
-  - $`\mathbf{A}^T\mathbf{y} \leq \mathbf{c}`$
-  - $`\mathbf{y}\leq \mathbf{0}`$
+```math
+\max_{\mathbf{y}} \mathbf{b}^T\mathbf{y}
+```
+```math
+\mathbf{A}^T\mathbf{y} \leq \mathbf{c}
+```
+```math
+\mathbf{y}\leq \mathbf{0}
+```
 
 Fontos észrevenni, hogy az eredeti problémának akkor van $`\mathbf{x}=\mathbf{0}`$-tól különböző megoldása, ha $`\mathbf{c}`$ negatív. Emiatt a duális probléma megengedhetőségi tartománya minden $`y_j`$ változóban negatív (és bár konvex, de nem korlátos tartomány, az origótól távolodva "nyitott"). Bevezetve a $`\mathbf{z}=-\mathbf{y}`$ helyettesítést, a megengedhetőségi tartomány az eredetihez hasonló alakú lesz:
-- $`\max_{\mathbf{y}} -\mathbf{b}^T\mathbf{z}`$
-- $`\mathbf{A}^T\mathbf{z} \geq -\mathbf{c}`$
-- $`\mathbf{z} \geq \mathbf{0}`$ 
+
+```math
+\max_{\mathbf{y}} -\mathbf{b}^T\mathbf{z}
+```
+```math
+\mathbf{A}^T\mathbf{z} \geq -\mathbf{c}
+```
+```math
+\mathbf{z} \geq \mathbf{0}
+```
 
 (Érdekes inspirációs videó: https://youtu.be/E72DWgKP_1Y?si=pK3geSNQbk8OOAxb)
 
@@ -127,10 +152,15 @@ amely azoknak az $`(x_1, x_2)`$ pontoknak a halmazát jelenti, amelyekre a  $`z=
 
 A szemidefinit program egy olyan optimalizálási probléma, ahol az optimalizálandó változók egy szimetrikus $`\mathbf{X}`$ mátrix elemei. A feladat a következő formában van megadva:
 
--  $`\min_{\mathbf{X}\in \mathbb{S}^n} \operatorname{trace}(\mathbf{CX})`$ 
-- Korlátozások:
-  - $`\operatorname{trace}(\mathbf{A}_i\mathbf{X}) \leq b_i, \quad i=1,\dots,m`$
-  - $`\mathbf{X} \succcurlyeq 0`$
+```math
+\min_{\mathbf{X}\in \mathbb{S}^n} \text{trace}(\mathbf{CX}),
+```
+```math
+\text{trace}(\mathbf{A}_i\mathbf{X}) \leq b_i, \quad i=1,\dots,m
+```
+```math
+\mathbf{X} \succcurlyeq 0
+```
 
 A második korlátozás jelentése, hogy $`\mathbf{X}`$ pozitív szemidefinit. Az $`\mathbf{A}`$ és $`\mathbf{C}`$ mátrixok is szimmetrikusak ($`\mathbf{A}, \mathbf{C} \in \mathbb{S}^n`$). 
 
@@ -138,20 +168,30 @@ A célfüggvény és az első egyenlőtlenség típusú korlátozás $`\mathbf{X
 
 Megfelelő további változók bevezetésével ($`\mathbf{X}`$ diagonális kibővítésével) az egyenlőtlenség típusú korlátozás egyenlőség típusúvá alakítható, ekkor a probléma alakja:
 
--  $`\min_{\mathbf{X}  \in \mathbb{S}^n} \operatorname{trace}(\mathbf{CX})`$ 
-- Korlátozások:
-  - $`\operatorname{trace}(\mathbf{A}_i\mathbf{X}) = b_i, \quad i=1,\dots,m`$
-  - $`\mathbf{X} \succcurlyeq 0`$
+```math
+\min_{\mathbf{X}  \in \mathbb{S}^n} \text{trace}(\mathbf{CX}),
+```
+```math
+\text{trace}(\mathbf{A}_i\mathbf{X}) = b_i, \quad i=1,\dots,m
+```
+```math
+\mathbf{X} \succcurlyeq 0
+```
 
 A fenti problémának létezik a duálisa is:
 
--  $`\max_{\mathbf{y}\in \mathbb{R}^m} \mathbf{b}^T\mathbf{y}, \quad \mathbf{b} = [b_1, \dots, b_m]^T`$ 
-- Korlátozások:
-  - $`\sum_{i=1}^m y_i \mathbf{A}_i - \mathbf{C} \preccurlyeq 0`$
+```math
+\max_{\mathbf{y}\in \mathbb{R}^m} \mathbf{b}^T\mathbf{y}, \quad \mathbf{b} = [b_1, \dots, b_m]^T
+```
+```math
+\sum_{i=1}^m y_i \mathbf{A}_i - \mathbf{C} \preccurlyeq 0
+```
 
 A korlátozás egy lineáris mátrixegyenlőtlenség (LMI), amelynek általános alakja:
 
-$`\mathbf{A}_0 + \sum_{i=1}^m y_i \mathbf{A}_i \preccurlyeq 0`$
+```math
+\mathbf{A}_0 + \sum_{i=1}^m y_i \mathbf{A}_i \preccurlyeq 0
+```
 
 A másodrendű kúpprogramozás a szemidefinit programozás speciális esete, mivel a másodrendű kúp korlátozás megfogalmazható lineáris mátrixegyenlőtlenség formájában is. A másodrendű kúp pontjainak halmaza megfeleltethető a szimmetrikus pozitív szemidefinit mátrixok egy részhalmazának, ugyanis
 
