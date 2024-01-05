@@ -55,10 +55,13 @@ ahol $\lambda = [\lambda_1,\dots,\lambda_r]^T$ az egyenlőség típusú, $\mu = 
 Ha $(\mathbf{x}^*,\lambda^*,\mu^*)$ egy optimumponthoz tartozó primer és duális változók, akkor a következő feltételek teljesülnek (az optimum szükséges feltételei, KKT feltételek): 
 
 1. Primer változó megfelelősége (Primal feasibility), vagyis $\mathbf{x}^*$ teljesíti a korlátozásokat:
+
 $$\nabla_{\lambda}L(\mathbf{x}^*,\lambda^*,\mu^*) = \mathbf{g}(\mathbf{x}^*) = \mathbf{0}$$
+
 $$\nabla_{\mu}L(\mathbf{x}^*,\lambda^*,\mu^*) = \mathbf{h}(\mathbf{x}^*) \leq \mathbf{0}$$
 
 2. Stacionaritás (Stationarity), azaz a korlátozások által megengedett irányokban nem lehetséges $f$ csökkentése:
+
 $$\nabla_{\mathbf{x}}L(\mathbf{x}^*,\lambda^*,\mu^*) = \nabla f(\mathbf{x}^*) + \sum_{i=1}^r \lambda_i^* \nabla g_i(\mathbf{x}^*) + \sum_{j=1}^s \mu_j^* \nabla h_j(\mathbf{x}^*) = \mathbf{0}$$ 
 
 3. Komplementaritás (Complementarity). Az egyenlőtlenség típusú korlátozásokat definiáló függvények és a hozzájuk tartozó Lagrange-multiplikátorok szorzata az optimumpontban zérus:
