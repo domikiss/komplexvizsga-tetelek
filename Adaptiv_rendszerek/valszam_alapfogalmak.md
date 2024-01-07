@@ -352,9 +352,69 @@ F_\eta(y) = P \left(\eta \leq y \right) = P \left(\xi^2 \leq y \right) = P \left
 f_\eta(y) = \frac{1}{\sqrt{2 \pi y}} e^{-\frac{1}{2}y^2}, \quad y\geq 0
 ```
 
-### $\chi^2$ eloszlás
+### $\chi^2$-eloszlás
+
+Vegyünk $n$ darab standard normális eloszlású független valószínűségi változót, és képezzük a négyzetösszegüket. A kapott eloszlás a $\chi^2$-eloszlás:
+
+```math
+\chi^2(n) = \sum_{i=1}^n \xi_i^2, \quad \text{ahol} \; \xi_1,\dots,\xi_n \sim \mathcal{N}(0,1) \text{ és független}
+```
+Az $n$ értéke a $\chi^2$ eloszlás szabadságfoka. A $\chi^2$-eloszlás várható értéke és varianciája a következő:
+
+```math
+E(\chi^2(n)) = n
+```
+```math
+D^2(\chi^2(n)) = 2n
+```
+
+A $\chi^2$-eloszlás sűrűségfüggvénye növekvő $n$ értékekre (az ábrán $k$-val jelölve):
+
+<p align="center">
+  <img src="pic/Chi-square_pdf.svg" width="50%" />
+</p>
+
+(Forrás: https://en.wikipedia.org/wiki/Chi-squared_distribution)
+
 
 ### Student-féle t-eloszlás
 
-### Fischer-eloszlás
+$n+1$ db standard normális eloszlású valószínűségi változóból a következőképpen származtatható a Student-eloszlás vagy másnéven t-eloszlás:
+
+```math
+t(n) = \frac{\eta}{\sqrt{\frac{1}{n}\sum_{i=1}^n \xi_i^2}}, \quad \text{ahol} \; \xi_1,\dots,\xi_n,\eta \sim \mathcal{N}(0,1) \text{ és független}
+```
+Az $n$ értéke a t-eloszlás szabadságfoka. A t-eloszlás várható értéke és varianciája a következő:
+
+```math
+E(t(n)) = 0
+```
+```math
+D^2(t(n)) = \frac{n}{n-2}
+```
+<p align="center">
+  <img src="pic/Student_t_pdf.svg" width="50%" />
+</p>
+
+(Forrás: https://en.wikipedia.org/wiki/Student%27s_t-distribution)
+
+
+### Fisher-eloszlás
+
+$n+m$ db standard normális eloszlású valószínűségi változóból a következőképpen származtatható a Fisher-eloszlás:
+
+```math
+F(m,n) = \frac{\frac{1}{m}\sum_{j=1}^m \eta_j^2}{\frac{1}{n}\sum_{i=1}^n \xi_i^2}, \quad \text{ahol} \; \xi_1,\dots,\xi_n,\eta_1,\dots,\eta_m \sim \mathcal{N}(0,1) \text{ és független}
+```
+A Fisher-eloszlás várható értéke a következő:
+
+```math
+E(F(m,n)) = \frac{n}{n-2}
+```
+
+<p align="center">
+  <img src="pic/F-distribution_pdf.svg" width="50%" />
+</p>
+
+(Forrás: https://en.wikipedia.org/wiki/F-distribution)
 
